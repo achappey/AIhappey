@@ -1,0 +1,6 @@
+@AIhappey.Core.WebApi_HostAddress = http://localhost:5015
+
+GET {{AIhappey.Core.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

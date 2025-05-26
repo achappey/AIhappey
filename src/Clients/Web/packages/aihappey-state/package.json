@@ -1,0 +1,16 @@
+{
+  "name": "aihappey-state",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "zustand": "^4.5.7",
+    "aihappey-types": "*",
+    "aihappey-http": "*",
+    "aihappey-mcp": "*"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}

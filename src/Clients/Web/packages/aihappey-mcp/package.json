@@ -1,0 +1,17 @@
+{
+  "name": "aihappey-mcp",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.1",
+    "aihappey-auth": "*"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "aihappey-types": "*"
+  }
+}
