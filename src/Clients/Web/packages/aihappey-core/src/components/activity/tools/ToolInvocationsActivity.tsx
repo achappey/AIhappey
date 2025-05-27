@@ -4,6 +4,7 @@ import { ToolInvocationCard } from "./ToolInvocationCard";
 import { ToolResultTextCard } from "./ToolResultTextCard";
 import { ToolResultResourceCard } from "./ToolResultResourceCard";
 import { ToolResultImageCard } from "./ToolResultImageCard";
+import { ToolResultAudioCard } from "./ToolResultAudioCard";
 
 /**
  * Renders a list of all tool invocation activities in the current conversation as cards.
@@ -55,6 +56,15 @@ export const ToolInvocationsActivity: React.FC = () => {
               cards.push(
                 <ToolResultImageCard
                   key={(inv.toolCallId || inv.msgId || i) + "-img-" + idx}
+                  invocation={inv}
+                  item={c}
+                  isError={inv.result.isError}
+                />
+              );
+            } else if (c.type === "audio") {
+              cards.push(
+                <ToolResultAudioCard
+                  key={(inv.toolCallId || inv.msgId || i) + "-audio-" + idx}
                   invocation={inv}
                   item={c}
                   isError={inv.result.isError}

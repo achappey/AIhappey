@@ -20734,7 +20734,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   // ../../packages/aihappey-core/dist/CoreRoot.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime29 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime30 = __toESM(require_jsx_runtime());
 
   // ../../packages/aihappey-core/dist/ThemeContext.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -47144,7 +47144,7 @@ ${serverError}`);
   // ../../packages/aihappey-core/dist/components/pages/ChatPage.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime27 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime28 = __toESM(require_jsx_runtime());
   var import_react32 = __toESM(require_react());
 
   // ../../packages/aihappey-core/dist/components/chat/ConversationSidebar.js
@@ -47318,7 +47318,6 @@ ${serverError}`);
       padding: 8,
       marginBottom: 8,
       cursor: "pointer"
-      //     background: "#fafbfc",
     }, onClick: () => onPromptClick(prompt), title: prompt.description || prompt.text || prompt.name, children: [(0, import_jsx_runtime6.jsx)("div", { style: { fontWeight: 500 }, children: prompt.name }), prompt.description && (0, import_jsx_runtime6.jsx)("div", { style: { color: "#888", fontSize: 13 }, children: prompt.description }), prompt.text && (0, import_jsx_runtime6.jsx)("div", { style: {
       color: "#444",
       fontSize: 13,
@@ -47363,7 +47362,6 @@ ${serverError}`);
       padding: 8,
       marginBottom: 8,
       cursor: "pointer"
-      //    background: "#fafbfc",
     }, onClick: () => onSelect(resource.uri), title: resource.description || resource.uri, children: [(0, import_jsx_runtime7.jsx)("div", { style: { fontWeight: 500 }, children: resource.name }), resource.description && (0, import_jsx_runtime7.jsx)("div", { style: { color: "#888", fontSize: 13 }, children: resource.description }), (0, import_jsx_runtime7.jsx)("div", { style: {
       color: "#444",
       fontSize: 13,
@@ -47629,7 +47627,7 @@ ${text9}
     return (0, import_jsx_runtime13.jsx)(SelectComponent, { value, onChange: (e) => {
       const selectedValue = e?.target?.value ?? e?.currentTarget?.value ?? e;
       onChange(selectedValue);
-    }, disabled, style: { minWidth: 160, maxWidth: 240 }, "aria-label": "Model", children: models.map((model) => (0, import_jsx_runtime13.jsx)("option", { value: model.id, children: model.displayName }, model.id)) });
+    }, disabled, size: "large", style: { minWidth: 160, maxWidth: 240 }, "aria-label": "Model", children: models.map((model) => (0, import_jsx_runtime13.jsx)("option", { value: model.id, children: model.displayName }, model.id)) });
   };
 
   // ../../packages/aihappey-core/dist/components/chat/useModels.js
@@ -47695,7 +47693,7 @@ ${text9}
   // ../../packages/aihappey-core/dist/components/activity/tools/ToolInvocationsActivity.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime21 = __toESM(require_jsx_runtime());
 
   // ../../packages/aihappey-core/dist/components/activity/tools/useToolInvocations.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -47859,25 +47857,40 @@ ${text9}
     });
   };
 
+  // ../../packages/aihappey-core/dist/components/activity/tools/ToolResultAudioCard.js
+  init_define_DEFAULT_MCP_SERVER_LIST_URLS();
+  init_define_MSAL_SCOPES();
+  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
+  var ToolResultAudioCard = ({ invocation, item, isError }) => {
+    const theme = useTheme();
+    const src = `data:${item.mimeType};base64,${item.data}`;
+    return theme.Card({
+      title: invocation.toolName,
+      children: (0, import_jsx_runtime20.jsxs)("audio", { controls: true, preload: "metadata", style: { width: "100%", outline: "none" }, children: [(0, import_jsx_runtime20.jsx)("source", { src, type: item.mimeType }), "Your browser does not support the HTML\xA0audio element."] })
+    });
+  };
+
   // ../../packages/aihappey-core/dist/components/activity/tools/ToolInvocationsActivity.js
   var ToolInvocationsActivity = () => {
     const invocations = useToolInvocations();
     if (!invocations.length) {
-      return (0, import_jsx_runtime20.jsx)("div", { style: { padding: 16, color: "#888" }, children: "No tool invocations found in this conversation." });
+      return (0, import_jsx_runtime21.jsx)("div", { style: { padding: 16, color: "#888" }, children: "No tool invocations found in this conversation." });
     }
     invocations.reverse();
-    return (0, import_jsx_runtime20.jsx)("div", { style: { padding: 8, display: "flex", flexDirection: "column", gap: 12 }, children: invocations.flatMap((inv, i) => {
+    return (0, import_jsx_runtime21.jsx)("div", { style: { padding: 8, display: "flex", flexDirection: "column", gap: 12 }, children: invocations.flatMap((inv, i) => {
       const cards = [
-        (0, import_jsx_runtime20.jsx)(ToolInvocationCard, { invocation: inv }, (inv.toolCallId || inv.msgId || i) + "-inv")
+        (0, import_jsx_runtime21.jsx)(ToolInvocationCard, { invocation: inv }, (inv.toolCallId || inv.msgId || i) + "-inv")
       ];
       if (inv.result?.content && Array.isArray(inv.result.content)) {
         inv.result.content.forEach((c, idx) => {
           if (c.type === "resource") {
-            cards.push((0, import_jsx_runtime20.jsx)(ToolResultResourceCard, { invocation: inv, item: c, isError: inv.result.isError }, (inv.toolCallId || inv.msgId || i) + "-res-" + idx));
+            cards.push((0, import_jsx_runtime21.jsx)(ToolResultResourceCard, { invocation: inv, item: c, isError: inv.result.isError }, (inv.toolCallId || inv.msgId || i) + "-res-" + idx));
           } else if (c.type === "text") {
-            cards.push((0, import_jsx_runtime20.jsx)(ToolResultTextCard, { invocation: inv, item: c, isError: inv.result.isError }, (inv.toolCallId || inv.msgId || i) + "-txt-" + idx));
+            cards.push((0, import_jsx_runtime21.jsx)(ToolResultTextCard, { invocation: inv, item: c, isError: inv.result.isError }, (inv.toolCallId || inv.msgId || i) + "-txt-" + idx));
           } else if (c.type === "image") {
-            cards.push((0, import_jsx_runtime20.jsx)(ToolResultImageCard, { invocation: inv, item: c, isError: inv.result.isError }, (inv.toolCallId || inv.msgId || i) + "-img-" + idx));
+            cards.push((0, import_jsx_runtime21.jsx)(ToolResultImageCard, { invocation: inv, item: c, isError: inv.result.isError }, (inv.toolCallId || inv.msgId || i) + "-img-" + idx));
+          } else if (c.type === "audio") {
+            cards.push((0, import_jsx_runtime21.jsx)(ToolResultAudioCard, { invocation: inv, item: c, isError: inv.result.isError }, (inv.toolCallId || inv.msgId || i) + "-audio-" + idx));
           }
         });
       }
@@ -47888,7 +47901,7 @@ ${text9}
   // ../../packages/aihappey-core/dist/components/activity/logging/LoggingNotificationsActivity.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime21 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime22 = __toESM(require_jsx_runtime());
 
   // ../../packages/aihappey-core/dist/components/activity/logging/LoggingNotificationCard.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -47907,21 +47920,21 @@ ${text9}
   var LoggingNotificationsActivity = () => {
     const notifications = useAppStore((s) => s.notifications);
     if (!notifications.length) {
-      return (0, import_jsx_runtime21.jsx)("div", { className: "p-3 text-muted", children: "No notifications" });
+      return (0, import_jsx_runtime22.jsx)("div", { className: "p-3 text-muted", children: "No notifications" });
     }
     notifications.reverse();
-    return (0, import_jsx_runtime21.jsx)("div", { className: "p-3", style: { display: "flex", flexDirection: "column", gap: 8 }, children: notifications.map((n, i) => (0, import_jsx_runtime21.jsx)(LoggingNotificationCard, { notif: n }, i)) });
+    return (0, import_jsx_runtime22.jsx)("div", { className: "p-3", style: { display: "flex", flexDirection: "column", gap: 8 }, children: notifications.map((n, i) => (0, import_jsx_runtime22.jsx)(LoggingNotificationCard, { notif: n }, i)) });
   };
 
   // ../../packages/aihappey-core/dist/components/activity/progress/ProgressNotificationsActivity.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime24 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime25 = __toESM(require_jsx_runtime());
 
   // ../../packages/aihappey-core/dist/components/activity/progress/ProgressNotificationCard.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime23 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime24 = __toESM(require_jsx_runtime());
 
   // ../../node_modules/react-markdown/index.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -49905,7 +49918,7 @@ ${text9}
   };
 
   // ../../node_modules/react-markdown/lib/index.js
-  var import_jsx_runtime22 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime23 = __toESM(require_jsx_runtime(), 1);
   var import_react31 = __toESM(require_react(), 1);
 
   // ../../node_modules/remark-parse/index.js
@@ -57863,11 +57876,11 @@ ${text9}
     }
     visit(tree, transform3);
     return toJsxRuntime(tree, {
-      Fragment: import_jsx_runtime22.Fragment,
+      Fragment: import_jsx_runtime23.Fragment,
       components,
       ignoreInvalidStyle: true,
-      jsx: import_jsx_runtime22.jsx,
-      jsxs: import_jsx_runtime22.jsxs,
+      jsx: import_jsx_runtime23.jsx,
+      jsxs: import_jsx_runtime23.jsxs,
       passKeys: true,
       passNode: true
     });
@@ -61683,7 +61696,7 @@ ${text9}
     const theme = useTheme();
     return theme.Card({
       title: notif.progressToken.toString(),
-      children: (0, import_jsx_runtime23.jsx)(Markdown, { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSanitize], children: notif.message })
+      children: (0, import_jsx_runtime24.jsx)(Markdown, { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSanitize], children: notif.message })
     });
   };
 
@@ -61691,21 +61704,21 @@ ${text9}
   var ProgressNotificationsActivity = () => {
     const progress = useAppStore((s) => s.progress);
     if (!progress.length) {
-      return (0, import_jsx_runtime24.jsx)("div", { className: "p-3 text-muted", children: "No progress" });
+      return (0, import_jsx_runtime25.jsx)("div", { className: "p-3 text-muted", children: "No progress" });
     }
     progress.reverse();
-    return (0, import_jsx_runtime24.jsx)("div", { className: "p-3", style: { display: "flex", flexDirection: "column", gap: 8 }, children: progress.map((n, i) => (0, import_jsx_runtime24.jsx)(ProgressNotificationCard, { notif: n }, i)) });
+    return (0, import_jsx_runtime25.jsx)("div", { className: "p-3", style: { display: "flex", flexDirection: "column", gap: 8 }, children: progress.map((n, i) => (0, import_jsx_runtime25.jsx)(ProgressNotificationCard, { notif: n }, i)) });
   };
 
   // ../../packages/aihappey-core/dist/components/activity/sampling/SamplingActivity.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime26 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime27 = __toESM(require_jsx_runtime());
 
   // ../../packages/aihappey-core/dist/components/activity/sampling/SamplingCard.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime25 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime26 = __toESM(require_jsx_runtime());
   var SamplingCard = ({ notif }) => {
     const { Chat: Chat3, Card: Card3 } = useTheme();
     console.log("dsadsa");
@@ -61725,7 +61738,7 @@ ${text9}
         createdAt: ""
       });
     }
-    return notif[1] ? (0, import_jsx_runtime25.jsx)(Card3, { title: notif[0].modelPreferences?.hints[0]?.name, text: notif[1].content.text }) : (0, import_jsx_runtime25.jsx)(Card3, { title: notif[0].modelPreferences?.hints[0]?.name, children: (0, import_jsx_runtime25.jsx)(Chat3, { messages: flatMapped }) });
+    return notif[1] ? (0, import_jsx_runtime26.jsx)(Card3, { title: notif[0].modelPreferences?.hints[0]?.name, text: notif[1].content.text }) : (0, import_jsx_runtime26.jsx)(Card3, { title: notif[0].modelPreferences?.hints[0]?.name, children: (0, import_jsx_runtime26.jsx)(Chat3, { messages: flatMapped }) });
   };
 
   // ../../packages/aihappey-core/dist/components/activity/sampling/SamplingActivity.js
@@ -61733,9 +61746,9 @@ ${text9}
     const sampling = useAppStore((s) => s.sampling);
     var items = Object.keys(sampling).map((t) => sampling[t]).reverse();
     if (!items.length) {
-      return (0, import_jsx_runtime26.jsx)("div", { className: "p-3 text-muted", children: "No sampling" });
+      return (0, import_jsx_runtime27.jsx)("div", { className: "p-3 text-muted", children: "No sampling" });
     }
-    return (0, import_jsx_runtime26.jsx)("div", { className: "p-3", style: { display: "flex", flexDirection: "column", gap: 8 }, children: items.map((n, i) => (0, import_jsx_runtime26.jsx)(SamplingCard, { notif: n }, i)) });
+    return (0, import_jsx_runtime27.jsx)("div", { className: "p-3", style: { display: "flex", flexDirection: "column", gap: 8 }, children: items.map((n, i) => (0, import_jsx_runtime27.jsx)(SamplingCard, { notif: n }, i)) });
   };
 
   // ../../packages/aihappey-core/dist/components/pages/ChatPage.js
@@ -61744,12 +61757,12 @@ ${text9}
     const [activeTab, setActiveTab] = (0, import_react32.useState)("toolInvocations");
     const theme = useTheme();
     const { showActivities, setActivities } = useUi();
-    return (0, import_jsx_runtime27.jsxs)("div", { style: {
+    return (0, import_jsx_runtime28.jsxs)("div", { style: {
       display: "flex",
       height: "100vh",
       minHeight: 0,
       minWidth: 0
-    }, children: [(0, import_jsx_runtime27.jsx)("div", { style: {
+    }, children: [(0, import_jsx_runtime28.jsx)("div", { style: {
       width: 260,
       minWidth: 180,
       maxWidth: 320,
@@ -61757,22 +61770,22 @@ ${text9}
       height: "100%",
       display: "flex",
       flexDirection: "column"
-    }, children: (0, import_jsx_runtime27.jsx)(ConversationSidebar, {}) }), (0, import_jsx_runtime27.jsxs)("div", { style: {
+    }, children: (0, import_jsx_runtime28.jsx)(ConversationSidebar, {}) }), (0, import_jsx_runtime28.jsxs)("div", { style: {
       flex: 1,
       minWidth: 0,
       display: "flex",
       flexDirection: "column"
-    }, children: [(0, import_jsx_runtime27.jsx)(ChatHeader, { value: selectedModel, onChange: setSelectedModel }), (0, import_jsx_runtime27.jsx)("div", { style: {
+    }, children: [(0, import_jsx_runtime28.jsx)(ChatHeader, { value: selectedModel, onChange: setSelectedModel }), (0, import_jsx_runtime28.jsx)("div", { style: {
       flex: 1,
       minHeight: 0,
       display: "flex",
       flexDirection: "column"
-    }, children: (0, import_jsx_runtime27.jsx)(ChatPanel, { model: selectedModel }) })] }), theme.Drawer && theme.Drawer({
+    }, children: (0, import_jsx_runtime28.jsx)(ChatPanel, { model: selectedModel }) })] }), theme.Drawer && theme.Drawer({
       open: showActivities,
       onClose: () => setActivities(false),
       title: "Activities",
       size: "medium",
-      children: (0, import_jsx_runtime27.jsxs)(theme.Tabs, { activeKey: activeTab, onSelect: setActiveTab, children: [(0, import_jsx_runtime27.jsx)(theme.Tab, { eventKey: "toolInvocations", title: "Tools", children: (0, import_jsx_runtime27.jsx)(ToolInvocationsActivity, {}) }), (0, import_jsx_runtime27.jsx)(theme.Tab, { eventKey: "mcpProgress", title: "Progress", children: (0, import_jsx_runtime27.jsx)(ProgressNotificationsActivity, {}) }), (0, import_jsx_runtime27.jsx)(theme.Tab, { eventKey: "mcpSampling", title: "Sampling", children: (0, import_jsx_runtime27.jsx)(SamplingActivity, {}) }), (0, import_jsx_runtime27.jsx)(theme.Tab, { eventKey: "mcpLogging", title: "Log", children: (0, import_jsx_runtime27.jsx)(LoggingNotificationsActivity, {}) })] })
+      children: (0, import_jsx_runtime28.jsxs)(theme.Tabs, { activeKey: activeTab, onSelect: setActiveTab, children: [(0, import_jsx_runtime28.jsx)(theme.Tab, { eventKey: "toolInvocations", title: "Tools", children: (0, import_jsx_runtime28.jsx)(ToolInvocationsActivity, {}) }), (0, import_jsx_runtime28.jsx)(theme.Tab, { eventKey: "mcpProgress", title: "Progress", children: (0, import_jsx_runtime28.jsx)(ProgressNotificationsActivity, {}) }), (0, import_jsx_runtime28.jsx)(theme.Tab, { eventKey: "mcpSampling", title: "Sampling", children: (0, import_jsx_runtime28.jsx)(SamplingActivity, {}) }), (0, import_jsx_runtime28.jsx)(theme.Tab, { eventKey: "mcpLogging", title: "Log", children: (0, import_jsx_runtime28.jsx)(LoggingNotificationsActivity, {}) })] })
     })] });
   };
 
@@ -61803,7 +61816,7 @@ ${text9}
   // ../../packages/aihappey-core/dist/components/mcp/McpConnectionsProvider.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime28 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime29 = __toESM(require_jsx_runtime());
   var import_react34 = __toESM(require_react());
   var McpConnectionsProvider = ({ children: children2, samplingApi }) => {
     const servers = useAppStore((s) => s.servers);
@@ -61841,7 +61854,7 @@ ${text9}
       };
       connectServers();
     }, [JSON.stringify(selected), JSON.stringify(servers), samplingApi]);
-    return (0, import_jsx_runtime28.jsx)(import_jsx_runtime28.Fragment, { children: children2 });
+    return (0, import_jsx_runtime29.jsx)(import_jsx_runtime29.Fragment, { children: children2 });
   };
 
   // ../../packages/aihappey-core/dist/CoreRoot.js
@@ -61861,17 +61874,17 @@ ${text9}
         getAccessToken: () => acquireAccessToken(authConfig.msal.scopes)
       };
     }, [chatConfig, authConfig]);
-    const chatUi = mergedChatConfig ? (0, import_jsx_runtime29.jsx)(ChatProvider, { config: mergedChatConfig, children: (0, import_jsx_runtime29.jsx)(ChatPage, {}) }) : (0, import_jsx_runtime29.jsx)("div", { children: "Loaded" });
-    const wrappedUi = (0, import_jsx_runtime29.jsx)(McpConnectionsProvider, { samplingApi: mergedChatConfig?.samplingApi, children: chatUi });
-    return msalInstance ? (0, import_jsx_runtime29.jsx)(MsalAuthProvider, { instance: msalInstance, children: (0, import_jsx_runtime29.jsx)(MsalAuthenticationTemplate, { interactionType: InteractionType.Redirect, authenticationRequest: { scopes: authConfig.msal.scopes }, children: wrappedUi }) }) : (0, import_jsx_runtime29.jsx)(import_jsx_runtime29.Fragment, { children: wrappedUi });
+    const chatUi = mergedChatConfig ? (0, import_jsx_runtime30.jsx)(ChatProvider, { config: mergedChatConfig, children: (0, import_jsx_runtime30.jsx)(ChatPage, {}) }) : (0, import_jsx_runtime30.jsx)("div", { children: "Loaded" });
+    const wrappedUi = (0, import_jsx_runtime30.jsx)(McpConnectionsProvider, { samplingApi: mergedChatConfig?.samplingApi, children: chatUi });
+    return msalInstance ? (0, import_jsx_runtime30.jsx)(MsalAuthProvider, { instance: msalInstance, children: (0, import_jsx_runtime30.jsx)(MsalAuthenticationTemplate, { interactionType: InteractionType.Redirect, authenticationRequest: { scopes: authConfig.msal.scopes }, children: wrappedUi }) }) : (0, import_jsx_runtime30.jsx)(import_jsx_runtime30.Fragment, { children: wrappedUi });
   };
 
   // ../../packages/aihappey-core/dist/components/markdown/Markdown.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime30 = __toESM(require_jsx_runtime());
-  var Markdown2 = ({ text: text9 }) => (0, import_jsx_runtime30.jsx)(Markdown, { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSanitize], components: {
-    p: ({ node: node3, ...props }) => (0, import_jsx_runtime30.jsx)("p", { style: { margin: "0.5em 0" }, ...props })
+  var import_jsx_runtime31 = __toESM(require_jsx_runtime());
+  var Markdown2 = ({ text: text9 }) => (0, import_jsx_runtime31.jsx)(Markdown, { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSanitize], components: {
+    p: ({ node: node3, ...props }) => (0, import_jsx_runtime31.jsx)("p", { style: { margin: "0.5em 0" }, ...props })
   }, children: text9 });
 
   // ../../packages/aihappey-theme-fluent/dist/index.js
@@ -61881,7 +61894,7 @@ ${text9}
   // ../../packages/aihappey-theme-fluent/dist/ThemeProvider.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime77 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime78 = __toESM(require_jsx_runtime());
 
   // ../../packages/aihappey-theme-fluent/dist/primitives.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -61894,7 +61907,7 @@ ${text9}
   // ../../packages/aihappey-theme-fluent/dist/primitives/Button.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime60 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime61 = __toESM(require_jsx_runtime());
 
   // ../../node_modules/@fluentui/react-components/lib/index.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -88489,42 +88502,42 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Button.js
   var iconMap2 = {
-    add: (0, import_jsx_runtime60.jsx)(AddRegular, {}),
-    edit: (0, import_jsx_runtime60.jsx)(EditRegular, {}),
-    delete: (0, import_jsx_runtime60.jsx)(DeleteRegular, {}),
-    prompts: (0, import_jsx_runtime60.jsx)(PromptRegular, {}),
-    resources: (0, import_jsx_runtime60.jsx)(DocumentRegular, {}),
-    mcpServer: (0, import_jsx_runtime60.jsx)(PlugConnectedSettingsRegular, {}),
-    send: (0, import_jsx_runtime60.jsx)(SendRegular, {}),
-    settings: (0, import_jsx_runtime60.jsx)(SettingsRegular, {}),
-    chevronDown: (0, import_jsx_runtime60.jsx)(ChevronDownRegular, {}),
-    chevronUp: (0, import_jsx_runtime60.jsx)(ChevronUpRegular, {})
+    add: (0, import_jsx_runtime61.jsx)(AddRegular, {}),
+    edit: (0, import_jsx_runtime61.jsx)(EditRegular, {}),
+    delete: (0, import_jsx_runtime61.jsx)(DeleteRegular, {}),
+    prompts: (0, import_jsx_runtime61.jsx)(PromptRegular, {}),
+    resources: (0, import_jsx_runtime61.jsx)(DocumentRegular, {}),
+    mcpServer: (0, import_jsx_runtime61.jsx)(PlugConnectedSettingsRegular, {}),
+    send: (0, import_jsx_runtime61.jsx)(SendRegular, {}),
+    settings: (0, import_jsx_runtime61.jsx)(SettingsRegular, {}),
+    chevronDown: (0, import_jsx_runtime61.jsx)(ChevronDownRegular, {}),
+    chevronUp: (0, import_jsx_runtime61.jsx)(ChevronUpRegular, {})
   };
   var Button2 = ({ variant = "primary", size: size3 = "medium", icon, iconPosition = "left", children: children2, ...rest }) => {
     const iconElem = icon ? iconMap2[icon] : void 0;
-    return (0, import_jsx_runtime60.jsx)(Button, { appearance: variant === "primary" ? "primary" : variant === "secondary" ? "secondary" : variant === "outline" ? "outline" : "transparent", size: size3 === "sm" || size3 === "small" ? "small" : size3 === "lg" || size3 === "large" ? "large" : "medium", icon: iconElem && iconPosition === "left" ? iconElem : void 0, iconAfter: iconElem && iconPosition === "right" ? iconElem : void 0, ...rest, children: children2 });
+    return (0, import_jsx_runtime61.jsx)(Button, { appearance: variant === "primary" ? "primary" : variant === "secondary" ? "secondary" : variant === "outline" ? "outline" : "transparent", size: size3 === "sm" || size3 === "small" ? "small" : size3 === "lg" || size3 === "large" ? "large" : "medium", icon: iconElem && iconPosition === "left" ? iconElem : void 0, iconAfter: iconElem && iconPosition === "right" ? iconElem : void 0, ...rest, children: children2 });
   };
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Input.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime61 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime62 = __toESM(require_jsx_runtime());
   var Input2 = (props) => {
     const { size: size3, ...rest } = props;
     const sizeProp = typeof size3 === "string" ? size3 === "sm" || size3 === "small" ? "small" : size3 === "lg" || size3 === "large" ? "large" : "medium" : "medium";
-    return (0, import_jsx_runtime61.jsx)(Input, { size: sizeProp, ...rest });
+    return (0, import_jsx_runtime62.jsx)(Input, { size: sizeProp, ...rest });
   };
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Card.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime62 = __toESM(require_jsx_runtime());
-  var Card2 = ({ title, text: text9, children: children2, actions }) => (0, import_jsx_runtime62.jsxs)(Card, { children: [(0, import_jsx_runtime62.jsx)(CardHeader, { header: (0, import_jsx_runtime62.jsx)("span", { children: title }) }), (0, import_jsx_runtime62.jsx)(CardPreview, { children: children2 ?? text9 }), actions && (0, import_jsx_runtime62.jsx)(CardFooter, { children: actions })] });
+  var import_jsx_runtime63 = __toESM(require_jsx_runtime());
+  var Card2 = ({ title, text: text9, children: children2, actions }) => (0, import_jsx_runtime63.jsxs)(Card, { children: [(0, import_jsx_runtime63.jsx)(CardHeader, { header: (0, import_jsx_runtime63.jsx)("span", { children: title }) }), (0, import_jsx_runtime63.jsx)(CardPreview, { children: children2 ?? text9 }), actions && (0, import_jsx_runtime63.jsx)(CardFooter, { children: actions })] });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Alert.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime64 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime65 = __toESM(require_jsx_runtime());
 
   // ../../node_modules/@fluentui/react-alert/lib/index.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -88787,28 +88800,28 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
   Alert.displayName = "Alert";
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Alert.js
-  var Alert2 = ({ variant, className, children: children2 }) => (0, import_jsx_runtime64.jsx)(Alert, { appearance: variant === "danger" || variant === "error" ? "primary" : variant === "warning" ? "inverted" : void 0, className, children: children2 });
+  var Alert2 = ({ variant, className, children: children2 }) => (0, import_jsx_runtime65.jsx)(Alert, { appearance: variant === "danger" || variant === "error" ? "primary" : variant === "warning" ? "inverted" : void 0, className, children: children2 });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Spinner.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime65 = __toESM(require_jsx_runtime());
-  var Spinner2 = ({ size: size3 = "tiny", className }) => (0, import_jsx_runtime65.jsx)(Spinner, { size: size3 === "sm" || size3 === "tiny" ? "tiny" : size3 === "xs" || size3 === "extra-small" ? "extra-small" : size3 === "md" || size3 === "medium" ? "medium" : size3 === "lg" || size3 === "large" ? "large" : "tiny", className });
+  var import_jsx_runtime66 = __toESM(require_jsx_runtime());
+  var Spinner2 = ({ size: size3 = "tiny", className }) => (0, import_jsx_runtime66.jsx)(Spinner, { size: size3 === "sm" || size3 === "tiny" ? "tiny" : size3 === "xs" || size3 === "extra-small" ? "extra-small" : size3 === "md" || size3 === "medium" ? "medium" : size3 === "lg" || size3 === "large" ? "large" : "tiny", className });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Modal.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime66 = __toESM(require_jsx_runtime());
-  var Modal = ({ show, onHide, size: size3, title, centered, children: children2 }) => (0, import_jsx_runtime66.jsxs)(Dialog, { open: show, onOpenChange: (_, data2) => !data2.open && onHide(), children: [(0, import_jsx_runtime66.jsx)(DialogTrigger, { disableButtonEnhancement: true, children: (0, import_jsx_runtime66.jsx)("span", { style: { display: "none" } }) }), (0, import_jsx_runtime66.jsx)(DialogSurface, { style: centered ? {
+  var import_jsx_runtime67 = __toESM(require_jsx_runtime());
+  var Modal = ({ show, onHide, size: size3, title, centered, children: children2 }) => (0, import_jsx_runtime67.jsxs)(Dialog, { open: show, onOpenChange: (_, data2) => !data2.open && onHide(), children: [(0, import_jsx_runtime67.jsx)(DialogTrigger, { disableButtonEnhancement: true, children: (0, import_jsx_runtime67.jsx)("span", { style: { display: "none" } }) }), (0, import_jsx_runtime67.jsx)(DialogSurface, { style: centered ? {
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
-  } : void 0, children: (0, import_jsx_runtime66.jsxs)(DialogBody, { style: { width: "100%" }, children: [(0, import_jsx_runtime66.jsx)(DialogTitle, { children: title }), (0, import_jsx_runtime66.jsx)(DialogContent, { children: children2 })] }) })] });
+  } : void 0, children: (0, import_jsx_runtime67.jsxs)(DialogBody, { style: { width: "100%" }, children: [(0, import_jsx_runtime67.jsx)(DialogTitle, { children: title }), (0, import_jsx_runtime67.jsx)(DialogContent, { children: children2 })] }) })] });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Tabs.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime67 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime68 = __toESM(require_jsx_runtime());
   var React177 = __toESM(require_react());
   var Tabs = ({ activeKey, onSelect, className, children: children2 }) => {
     const headers = [];
@@ -88818,12 +88831,12 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
         return;
       const tab2 = child;
       const { eventKey, title } = tab2.props;
-      headers.push((0, import_jsx_runtime67.jsx)(Tab2, { value: eventKey, children: title }, eventKey));
+      headers.push((0, import_jsx_runtime68.jsx)(Tab2, { value: eventKey, children: title }, eventKey));
       if (eventKey === activeKey) {
-        activePanel = (0, import_jsx_runtime67.jsx)("div", { style: { padding: "1em 0" }, children: tab2.props.children });
+        activePanel = (0, import_jsx_runtime68.jsx)("div", { style: { padding: "1em 0" }, children: tab2.props.children });
       }
     });
-    return (0, import_jsx_runtime67.jsxs)("div", { className, children: [(0, import_jsx_runtime67.jsx)(TabList, { selectedValue: activeKey, onTabSelect: (_, data2) => onSelect(data2.value), children: headers }), activePanel] });
+    return (0, import_jsx_runtime68.jsxs)("div", { className, children: [(0, import_jsx_runtime68.jsx)(TabList, { selectedValue: activeKey, onTabSelect: (_, data2) => onSelect(data2.value), children: headers }), activePanel] });
   };
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Tab.js
@@ -88835,19 +88848,19 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
   // ../../packages/aihappey-theme-fluent/dist/primitives/Badge.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime68 = __toESM(require_jsx_runtime());
-  var Badge2 = ({ bg, text: text9, children: children2 }) => (0, import_jsx_runtime68.jsx)(Badge, { color: bg == "primary" ? "brand" : bg, children: text9 ?? children2 });
+  var import_jsx_runtime69 = __toESM(require_jsx_runtime());
+  var Badge2 = ({ bg, text: text9, children: children2 }) => (0, import_jsx_runtime69.jsx)(Badge, { color: bg == "primary" ? "brand" : bg, children: text9 ?? children2 });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Table.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime69 = __toESM(require_jsx_runtime());
-  var Table2 = (props) => (0, import_jsx_runtime69.jsx)(Table, { ...props, children: props.children });
+  var import_jsx_runtime70 = __toESM(require_jsx_runtime());
+  var Table2 = (props) => (0, import_jsx_runtime70.jsx)(Table, { ...props, children: props.children });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Chat.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime70 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime71 = __toESM(require_jsx_runtime());
 
   // ../../node_modules/@fluentui-contrib/react-chat/lib/index.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
@@ -89601,46 +89614,46 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
   ChatMyMessage.displayName = "ChatMyMessage";
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Chat.js
-  var Chat2 = ({ messages }) => (0, import_jsx_runtime70.jsx)(Chat, { children: messages?.map((a) => a.role == "user" ? (0, import_jsx_runtime70.jsx)(ChatMyMessage, { children: (0, import_jsx_runtime70.jsx)(Markdown2, { text: a.content }) }) : (0, import_jsx_runtime70.jsx)(ChatMessage, { children: (0, import_jsx_runtime70.jsx)(Markdown2, { text: a.content }) })) });
+  var Chat2 = ({ messages }) => (0, import_jsx_runtime71.jsx)(Chat, { children: messages?.map((a) => a.role == "user" ? (0, import_jsx_runtime71.jsx)(ChatMyMessage, { children: (0, import_jsx_runtime71.jsx)(Markdown2, { text: a.content }) }) : (0, import_jsx_runtime71.jsx)(ChatMessage, { children: (0, import_jsx_runtime71.jsx)(Markdown2, { text: a.content }) })) });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/CloseButton.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime71 = __toESM(require_jsx_runtime());
-  var CloseButton = ({ onClick, className, style, "aria-label": ariaLabel }) => (0, import_jsx_runtime71.jsx)(Button, { appearance: "subtle", shape: "circular", icon: (0, import_jsx_runtime71.jsx)(Dismiss24Regular, {}), "aria-label": ariaLabel || "Close", onClick, className, style });
+  var import_jsx_runtime72 = __toESM(require_jsx_runtime());
+  var CloseButton = ({ onClick, className, style, "aria-label": ariaLabel }) => (0, import_jsx_runtime72.jsx)(Button, { appearance: "subtle", shape: "circular", icon: (0, import_jsx_runtime72.jsx)(Dismiss24Regular, {}), "aria-label": ariaLabel || "Close", onClick, className, style });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Switch.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime72 = __toESM(require_jsx_runtime());
-  var Switch2 = ({ id, label, checked, onChange, className }) => (0, import_jsx_runtime72.jsx)(Switch, { id, checked, onChange: (_, data2) => onChange(data2.checked), className, label });
+  var import_jsx_runtime73 = __toESM(require_jsx_runtime());
+  var Switch2 = ({ id, label, checked, onChange, className }) => (0, import_jsx_runtime73.jsx)(Switch, { id, checked, onChange: (_, data2) => onChange(data2.checked), className, label });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/TextArea.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime73 = __toESM(require_jsx_runtime());
-  var TextArea = ({ rows, value, onChange, style, readOnly, className }) => (0, import_jsx_runtime73.jsx)(Textarea, { rows, value, disabled: readOnly, onChange: onChange ? (_, data2) => onChange(data2.value) : void 0, style, className });
+  var import_jsx_runtime74 = __toESM(require_jsx_runtime());
+  var TextArea = ({ rows, value, onChange, style, readOnly, className }) => (0, import_jsx_runtime74.jsx)(Textarea, { rows, value, disabled: readOnly, onChange: onChange ? (_, data2) => onChange(data2.value) : void 0, style, className });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Select.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime74 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime75 = __toESM(require_jsx_runtime());
   var React188 = __toESM(require_react());
   var Select2 = ({ value, onChange, disabled, children: children2, style, "aria-label": ariaLabel, ...rest }) => {
     const options = React188.Children.toArray(children2).filter(React188.isValidElement).map((child) => ({
       value: child.props.value,
       label: child.props.children
     }));
-    return (0, import_jsx_runtime74.jsx)(Dropdown, { value: options.find((o) => o.value === value)?.label ?? "", selectedOptions: [value], onOptionSelect: (_, data2) => {
+    return (0, import_jsx_runtime75.jsx)(Dropdown, { value: options.find((o) => o.value === value)?.label ?? "", selectedOptions: [value], onOptionSelect: (_, data2) => {
       if (data2.optionValue)
         onChange(data2.optionValue);
-    }, disabled, style, "aria-label": ariaLabel, ...rest, children: options.map((opt) => (0, import_jsx_runtime74.jsx)(Option, { value: opt.value, children: opt.label }, opt.value)) });
+    }, disabled, style, "aria-label": ariaLabel, ...rest, children: options.map((opt) => (0, import_jsx_runtime75.jsx)(Option, { value: opt.value, children: opt.label }, opt.value)) });
   };
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Drawer.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime75 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime76 = __toESM(require_jsx_runtime());
   var sizeMap = {
     small: "small",
     medium: "medium",
@@ -89656,19 +89669,19 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
     backdrop = true,
     // OverlayDrawer always has backdrop, ignore param
     children: children2
-  }) => (0, import_jsx_runtime75.jsxs)(InlineDrawer, {
+  }) => (0, import_jsx_runtime76.jsxs)(InlineDrawer, {
     open,
     // onOpenChange={(_, data) => !data.open && onClose()}
     position: position4 === "top" ? "end" : position4,
     size: sizeMap[size3],
-    children: [title && (0, import_jsx_runtime75.jsx)(DrawerHeader, { children: (0, import_jsx_runtime75.jsx)(DrawerHeaderTitle, { children: title }) }), (0, import_jsx_runtime75.jsx)(DrawerBody, { children: children2 })]
+    children: [title && (0, import_jsx_runtime76.jsx)(DrawerHeader, { children: (0, import_jsx_runtime76.jsx)(DrawerHeaderTitle, { children: title }) }), (0, import_jsx_runtime76.jsx)(DrawerBody, { children: children2 })]
   });
 
   // ../../packages/aihappey-theme-fluent/dist/primitives/Image.js
   init_define_DEFAULT_MCP_SERVER_LIST_URLS();
   init_define_MSAL_SCOPES();
-  var import_jsx_runtime76 = __toESM(require_jsx_runtime());
-  var Image2 = ({ src, ...rest }) => (0, import_jsx_runtime76.jsx)(Image, { src, ...rest });
+  var import_jsx_runtime77 = __toESM(require_jsx_runtime());
+  var Image2 = ({ src, ...rest }) => (0, import_jsx_runtime77.jsx)(Image, { src, ...rest });
 
   // ../../packages/aihappey-theme-fluent/dist/fluentTheme.js
   var fluentTheme = {
@@ -89900,7 +89913,7 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
   // ../../packages/aihappey-theme-fluent/dist/ThemeProvider.js
   var ThemeProvider2 = ({ children: children2 }) => {
     const { isDarkMode } = useDarkMode();
-    return (0, import_jsx_runtime77.jsx)(ThemeContext.Provider, { value: fluentTheme, children: (0, import_jsx_runtime77.jsx)(FluentProvider, { theme: isDarkMode ? webDarkTheme : webLightTheme, children: children2 }) });
+    return (0, import_jsx_runtime78.jsx)(ThemeContext.Provider, { value: fluentTheme, children: (0, import_jsx_runtime78.jsx)(FluentProvider, { theme: isDarkMode ? webDarkTheme : webLightTheme, children: children2 }) });
   };
 
   // src/msalConfig.ts
@@ -89921,8 +89934,8 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
   };
 
   // src/App.tsx
-  var import_jsx_runtime78 = __toESM(require_jsx_runtime());
-  var App = () => /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ThemeProvider2, { children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
+  var import_jsx_runtime79 = __toESM(require_jsx_runtime());
+  var App = () => /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(ThemeProvider2, { children: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
     CoreRoot,
     {
       initialLists: define_DEFAULT_MCP_SERVER_LIST_URLS_default,
@@ -89944,21 +89957,21 @@ and at most two children <DialogTrigger/> <DialogSurface/> (in this order).`);
   var App_default = App;
 
   // src/main.tsx
-  var import_jsx_runtime79 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime80 = __toESM(require_jsx_runtime());
   var router = createBrowserRouter([
     {
       path: "/oauth-callback",
-      element: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(OAuthCallbackPage_default, {})
+      element: /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(OAuthCallbackPage_default, {})
     },
     {
       path: "/*",
-      element: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(App_default, {})
+      element: /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(App_default, {})
     }
   ]);
   var container = document.getElementById("root");
   if (container) {
     const root5 = (0, import_client2.createRoot)(container);
-    root5.render(/* @__PURE__ */ (0, import_jsx_runtime79.jsx)(RouterProvider, { router }));
+    root5.render(/* @__PURE__ */ (0, import_jsx_runtime80.jsx)(RouterProvider, { router }));
   }
 })();
 /*! Bundled license information:

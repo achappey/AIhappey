@@ -34,6 +34,7 @@ export const ModelSelect: React.FC<ModelSelectProps> = ({
         onChange(selectedValue);
       }}
       disabled={disabled}
+      size="large"
       style={{ minWidth: 160, maxWidth: 240 }}
       aria-label="Model"
     >
