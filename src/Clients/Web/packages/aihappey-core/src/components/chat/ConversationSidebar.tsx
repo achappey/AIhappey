@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useConversations } from "../chat/useConversations";
 import { useTheme } from "../../ThemeContext";
-import { useChatStore } from "../chat";
+import { useChatContext, useChatStore } from "../chat";
+import { useAppStore } from "aihappey-state";
 
 export const ConversationSidebar = () => {
   const {
@@ -14,7 +15,7 @@ export const ConversationSidebar = () => {
   const { Button, Input } = useTheme();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
-
+  const { config } = useChatContext();
   const startEdit = (id: string, name: string) => {
     setEditingId(id);
     setEditValue(name);
@@ -38,7 +39,7 @@ export const ConversationSidebar = () => {
           justifyContent: "space-between",
         }}
       >
-        <span style={{ fontWeight: "bold" }}>Conversations</span>
+        <span style={{ fontWeight: "bold" }}>{config.appName}</span>
         <Button
           size="sm"
           icon="add"
@@ -93,8 +94,7 @@ export const ConversationSidebar = () => {
                       e.stopPropagation();
                       startEdit(conv.id, conv.name);
                     }}
-                  >
-                  </Button>
+                  ></Button>
                   <Button
                     size="sm"
                     variant="danger"
@@ -103,8 +103,7 @@ export const ConversationSidebar = () => {
                       e.stopPropagation();
                       removeConversation(conv.id);
                     }}
-                  >
-                  </Button>
+                  ></Button>
                 </span>
               </>
             )}

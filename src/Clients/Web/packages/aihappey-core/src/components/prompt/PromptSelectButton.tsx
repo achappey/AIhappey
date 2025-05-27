@@ -104,7 +104,6 @@ const PromptSelectModal = ({
               padding: 8,
               marginBottom: 8,
               cursor: "pointer",
-              background: "#fafbfc",
             }}
             onClick={() => onPromptClick(prompt as PromptWithSource)}
             title={prompt.description || prompt.text || prompt.name}

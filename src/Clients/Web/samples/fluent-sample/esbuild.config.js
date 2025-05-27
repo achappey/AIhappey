@@ -4,6 +4,7 @@ const isWatch = process.argv.includes("--watch");
 const defaultUrlsEnv = process.env.DEFAULT_MCP_SERVER_LIST_URLS_JSON;
 let defaultUrls = ["http://localhost:3001/mcp.json"]; // Default fallback array
 const chatApi = process.env.CHAT_API_URL || "http://localhost:3010/api/chat";
+const appName = process.env.APP_NAME || "YACB";
 const modelsApi = process.env.MODELS_API_URL || "http://localhost:3010/models";
 const samplingApi = process.env.SAMPLING_API_URL || "http://localhost:3010/sampling";
 const msalClientId = process.env.MSAL_CLIENT_ID || "3103139a-fc1c-483c-b66d-e2b177ca1fa3";
@@ -36,6 +37,7 @@ const buildOptions = {
     "__DEFAULT_MCP_SERVER_LIST_URLS__": JSON.stringify(defaultUrls),
      "__CHAT_API__": JSON.stringify(chatApi),
     "__MODELS_API__": JSON.stringify(modelsApi),
+    "__APP_NAME__": JSON.stringify(appName),
     "__SAMPLING_API__": JSON.stringify(samplingApi),
     "__MSAL_CLIENT_ID__": JSON.stringify(msalClientId),
     "__MSAL_AUTHORITY__": JSON.stringify(msalAuthority),

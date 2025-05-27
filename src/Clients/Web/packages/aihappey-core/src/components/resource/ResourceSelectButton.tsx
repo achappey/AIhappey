@@ -91,7 +91,6 @@ const ResourceSelectModal = ({
               padding: 8,
               marginBottom: 8,
               cursor: "pointer",
-              background: "#fafbfc",
             }}
             onClick={() => onSelect(resource.uri)}
             title={resource.description || resource.uri}

@@ -24,7 +24,6 @@ export const ChatPage = () => {
         height: "100vh",
         minHeight: 0,
         minWidth: 0,
-        background: "#f8f9fa",
       }}
     >
       <div
@@ -33,7 +32,6 @@ export const ChatPage = () => {
           minWidth: 180,
           maxWidth: 320,
           borderRight: "1px solid #ddd",
-          background: "#fff",
           height: "100%",
           display: "flex",
           flexDirection: "column",

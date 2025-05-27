@@ -5,10 +5,12 @@ declare const __DEFAULT_MCP_SERVER_LIST_URLS__: string[];
 declare const __CHAT_API__: string;
 declare const __MODELS_API__: string;
 declare const __SAMPLING_API__: string;
+declare const __APP_NAME__: string;
 
 const App = () => (
   <ThemeProvider>
     <CoreRoot
+      appName={__APP_NAME__}
       initialLists={__DEFAULT_MCP_SERVER_LIST_URLS__}
       chatConfig={{
         api: __CHAT_API__,

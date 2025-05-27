@@ -19,6 +19,7 @@ import {
 import { useMemo } from "react";
 
 type CoreRootProps = {
+  appName?: string;
   initialLists?: string[];
   allowCustomLists?: boolean;
   chatConfig?: ChatConfig;
@@ -28,6 +29,7 @@ type CoreRootProps = {
 export const CoreRoot = ({
   initialLists = [],
   chatConfig,
+  appName,
   authConfig,
 }: CoreRootProps) => {
   useTheme(); // Throws if no provider
@@ -47,6 +49,7 @@ export const CoreRoot = ({
     const api = chatConfig?.api ?? "/api/chat";
     return {
       ...chatConfig,
+      appName,
       api,
       getAccessToken: () => acquireAccessToken(authConfig.msal.scopes),
     };

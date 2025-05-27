@@ -12,7 +12,7 @@ export const useChatStore = () => {
   // Use aihappey-ai's useAiChat, always with our chatStore and selectedConversationId
   return useAiChat({
     chatStore,
-    onFinish: (opts) => {console.log("BLAAAAA");console.log(opts)}, // SAVE ASSISTANT MESSAGE TO LOCALSTORE HERE
+    onFinish: (opts) => console.log(opts), // SAVE ASSISTANT MESSAGE TO LOCALSTORE HERE
     onError: (err) => console.error(err),
     onToolCall: async ({ toolCall }) => {
       const result = await callTool(toolCall.toolCallId, toolCall.toolName, toolCall.args);

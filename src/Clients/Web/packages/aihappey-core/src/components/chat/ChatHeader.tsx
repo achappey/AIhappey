@@ -34,7 +34,6 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ value, onChange }) => {
         height: 48,
         display: "flex",
         alignItems: "center",
-        background: "#fff",
         borderBottom: "1px solid #ddd",
         padding: "0 12px",
         gap: 16,

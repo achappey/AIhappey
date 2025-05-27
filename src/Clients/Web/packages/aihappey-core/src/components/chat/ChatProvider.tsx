@@ -8,6 +8,7 @@ import type { ReactNode, FC } from "react";
 export interface ChatConfig extends AiChatConfig {
   modelsApi?: string;
   samplingApi?: string;
+  appName?: string
 }
 
 export const ChatProvider: FC<{ config: ChatConfig; children: ReactNode }> = ({
